@@ -77,7 +77,9 @@
       h += "</button>";
     });
     h +=
-      '<div class="picker-hint">Use 1-' + LABELS.length + ', arrow keys + enter, or click to select</div>';
+      '<div class="picker-hint">Use 1-' +
+      LABELS.length +
+      ", arrow keys + enter, or click to select</div>";
     h += "</div>";
     return h;
   }
@@ -186,7 +188,8 @@
     var h = "";
     THEMES.forEach(function (id, i) {
       var cls = id === currentTheme ? ' class="active-theme"' : "";
-      h += "<button data-theme=\"" + id + "\"" + cls + ">" + LABELS[i] + "</button>";
+      h +=
+        '<button data-theme="' + id + '"' + cls + ">" + LABELS[i] + "</button>";
     });
     optionsContainer.innerHTML = h;
 

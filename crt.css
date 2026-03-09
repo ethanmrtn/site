@@ -1,80 +1,103 @@
 /* CRT Overlay — shared across all themes, intensity controlled via CSS vars */
 :root {
-  --crt-intensity: 1;
-  --crt-flicker: 1;
+    --crt-intensity: 1;
+    --crt-flicker: 1;
 }
 
 /* Scanlines + Vignette */
 #crt-overlay {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9000;
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9000;
 }
 
 #crt-overlay::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, calc(0.18 * var(--crt-intensity))) 0px,
-    rgba(0, 0, 0, calc(0.18 * var(--crt-intensity))) 1px,
-    transparent 1px,
-    transparent 3px
-  );
-  animation: scanroll 8s linear infinite;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, calc(0.18 * var(--crt-intensity))) 0px,
+        rgba(0, 0, 0, calc(0.18 * var(--crt-intensity))) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    animation: scanroll 8s linear infinite;
 }
 
 #crt-overlay::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    ellipse at center,
-    transparent 55%,
-    rgba(0, 0, 0, calc(0.85 * var(--crt-intensity))) 100%
-  );
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 55%,
+        rgba(0, 0, 0, calc(0.85 * var(--crt-intensity))) 100%
+    );
 }
 
 @keyframes scanroll {
-  0% { background-position: 0 0; }
-  100% { background-position: 0 200px; }
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 200px;
+    }
 }
 
 /* Noise grain */
 #crt-noise {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9001;
-  opacity: calc(0.025 * var(--crt-intensity));
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 128px 128px;
-  animation: noiseAnim 0.15s steps(2) infinite;
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9001;
+    opacity: calc(0.025 * var(--crt-intensity));
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 128px 128px;
+    animation: noiseAnim 0.15s steps(2) infinite;
 }
 
 @keyframes noiseAnim {
-  0% { transform: translate(0, 0); }
-  50% { transform: translate(-5px, -5px); }
-  100% { transform: translate(5px, 2px); }
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(-5px, -5px);
+    }
+    100% {
+        transform: translate(5px, 2px);
+    }
 }
 
 /* Flicker — applied to #app */
 #app {
-  animation: flicker 4s infinite;
+    animation: flicker 4s infinite;
 }
 
 /* Themes that set --crt-flicker: 0 should also add no-flicker class */
 body.no-flicker #app {
-  animation: none;
+    animation: none;
 }
 
 @keyframes flicker {
-  0%, 100% { opacity: 1; }
-  92% { opacity: 1; }
-  93% { opacity: 0.85; }
-  94% { opacity: 1; }
-  96% { opacity: 0.9; }
-  97% { opacity: 1; }
+    0%,
+    100% {
+        opacity: 1;
+    }
+    92% {
+        opacity: 1;
+    }
+    93% {
+        opacity: 0.85;
+    }
+    94% {
+        opacity: 1;
+    }
+    96% {
+        opacity: 0.9;
+    }
+    97% {
+        opacity: 1;
+    }
 }
