@@ -103,56 +103,91 @@
 
 /* Terminal */
 body.terminal .theme-switch-tab {
-  background: rgba(2,10,2,0.9);
-  border-color: #1a7a08;
+  background: rgba(2,10,2,0.95);
+  border-color: #0d3d04;
+  border-radius: 0;
   color: #1a7a08;
   font-family: "Share Tech Mono", monospace;
-}
-body.terminal .theme-switch-tab:hover { color: #39ff14; }
-body.terminal .theme-switch-options {
-  background: rgba(2,10,2,0.95);
-  border-color: #1a7a08;
-}
-body.terminal .theme-switch-options button { color: #1a7a08; font-family: "Share Tech Mono", monospace; }
-body.terminal .theme-switch-options button:hover { background: rgba(57,255,20,0.08); color: #39ff14; }
-body.terminal .theme-switch-options button.active-theme { color: #39ff14; }
-
-/* Plain */
-body.plain .theme-switch-tab {
-  background: #fff;
-  border-color: #ccc;
-  color: #333;
-  font-family: "Times New Roman", serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   backdrop-filter: none;
 }
-body.plain .theme-switch-tab:hover { background: #eee; color: #000; }
+body.terminal .theme-switch-tab:hover { color: #39ff14; border-color: #1a7a08; }
+body.terminal .theme-switch-options {
+  background: rgba(2,10,2,0.95);
+  border-color: #0d3d04;
+  border-radius: 0;
+  border-top-color: #0d3d04;
+  backdrop-filter: none;
+}
+body.terminal .theme-switch-options button {
+  color: #1a7a08;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom-color: #0d3d04;
+}
+body.terminal .theme-switch-options button:hover { background: rgba(57,255,20,0.06); color: #39ff14; }
+body.terminal .theme-switch-options button.active-theme { color: #39ff14; text-shadow: 0 0 6px rgba(57,255,20,0.4); }
+
+/* Plain — looks like a default browser button/select */
+body.plain .theme-switch-tab {
+  background: #f0f0f0;
+  border: 2px outset #ddd;
+  border-bottom: none;
+  border-radius: 0;
+  color: #000;
+  font-family: "Times New Roman", serif;
+  font-size: 14px;
+  backdrop-filter: none;
+}
+body.plain .theme-switch-tab:hover { background: #e0e0e0; }
 body.plain .theme-switch-options {
   background: #fff;
-  border-color: #ccc;
-  border-top-color: #ddd;
+  border: 2px outset #ddd;
+  border-top: 1px solid #ccc;
+  border-radius: 0;
+  backdrop-filter: none;
 }
-body.plain .theme-switch-options button { color: #333; font-family: "Times New Roman", serif; }
-body.plain .theme-switch-options button:hover { background: #eee; color: #000; }
-body.plain .theme-switch-options button.active-theme { color: blue; }
+body.plain .theme-switch-options button {
+  color: #000;
+  font-family: "Times New Roman", serif;
+  font-size: 14px;
+  border-bottom-color: #ddd;
+}
+body.plain .theme-switch-options button:hover { background: #06c; color: #fff; }
+body.plain .theme-switch-options button.active-theme { color: #00c; font-weight: bold; }
 
-/* AI Slop */
+/* AI Slop — soft pastel pill with shadow, matches the card aesthetic */
 body.ai-slop .theme-switch-tab {
-  background: rgba(255,255,255,0.85);
-  border-color: rgba(167,139,250,0.2);
+  background: #fff;
+  border: none;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
   color: #7c7c9a;
   font-family: "Quicksand", sans-serif;
   font-weight: 600;
-  border-radius: 16px 16px 0 0;
-  backdrop-filter: blur(14px);
+  font-size: 13px;
+  backdrop-filter: none;
 }
-body.ai-slop .theme-switch-tab:hover { color: #2d2d3f; background: rgba(255,255,255,0.95); }
+body.ai-slop .theme-switch-tab:hover { color: #2d2d3f; background: #fff; }
 body.ai-slop .theme-switch-options {
-  background: rgba(255,255,255,0.95);
-  border-color: rgba(167,139,250,0.2);
-  border-top-color: rgba(167,139,250,0.1);
-  backdrop-filter: blur(14px);
+  background: #fff;
+  border: none;
+  border-top: 1px solid #f0ecf5;
+  border-radius: 0;
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
+  backdrop-filter: none;
 }
-body.ai-slop .theme-switch-options button { color: #7c7c9a; font-family: "Quicksand", sans-serif; font-weight: 600; }
+body.ai-slop .theme-switch-options button {
+  color: #7c7c9a;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  border-bottom-color: #f0ecf5;
+}
 body.ai-slop .theme-switch-options button:hover { background: #f3eaff; color: #2d2d3f; }
 body.ai-slop .theme-switch-options button.active-theme { color: #a78bfa; }
 

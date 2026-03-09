@@ -148,14 +148,23 @@
     var oldScript = document.getElementById("theme-script");
     if (oldScript) oldScript.remove();
 
-    // Set theme CSS
-    themeCssLink.href = "themes/" + id + ".css";
+    // Load CSS first, then JS once CSS is ready
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "themes/" + id + ".css";
+    link.id = "theme-css-preload";
+    link.onload = function () {
+      // Swap into the real theme-css link
+      themeCssLink.href = link.href;
+      link.remove();
 
-    // Load theme JS
-    var script = document.createElement("script");
-    script.src = "themes/" + id + ".js";
-    script.id = "theme-script";
-    document.body.appendChild(script);
+      // Now load the theme JS
+      var script = document.createElement("script");
+      script.src = "themes/" + id + ".js";
+      script.id = "theme-script";
+      document.body.appendChild(script);
+    };
+    document.head.appendChild(link);
 
     // Fade out selector
     selector.classList.add("hidden");
