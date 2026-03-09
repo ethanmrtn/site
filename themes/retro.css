@@ -586,7 +586,7 @@ body.retro .spin-icon {
 
 @media (max-width: 700px) {
     body.retro {
-        font-family: "Comic Sans MS", "Comic Sans", Arial, sans-serif;
+        font-family: "Comic Sans MS", "Comic Sans", "Courier New", monospace;
     }
 
     body.retro .retro-sidebar {
