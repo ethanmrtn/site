@@ -498,6 +498,10 @@ body.corporate .word-statusbar {
         font-size: 14px;
     }
 
+    body.corporate .ribbon-btn-large {
+        display: none;
+    }
+
     body.corporate .word-page {
         padding: 48px 32px;
         height: auto;
