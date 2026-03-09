@@ -585,6 +585,10 @@ body.retro .spin-icon {
 /* ── Responsive ── */
 
 @media (max-width: 700px) {
+    body.retro {
+        font-family: "Comic Sans MS", "Comic Sans", Arial, sans-serif;
+    }
+
     body.retro .retro-sidebar {
         display: none;
     }

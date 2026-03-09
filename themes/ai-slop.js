@@ -228,7 +228,7 @@
         timers.push(setTimeout(function () {
           var btn = document.createElement('button');
           btn.className = 'gpt-show-output';
-          btn.textContent = '\u25b6 Show Output';
+          btn.textContent = 'Show Output';
           btn.addEventListener('click', revealPortfolio);
           responseTextEl.parentNode.appendChild(btn);
         }, 400));

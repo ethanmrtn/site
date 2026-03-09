@@ -549,7 +549,7 @@ body.bubbly .gpt-thinking span:nth-child(3) { animation-delay: 0.4s; }
 
 /* Show Output button */
 body.bubbly .gpt-show-output {
-  display: inline-block;
+  display: block;
   margin-top: 16px;
   padding: 10px 24px;
   background: #10a37f;
@@ -558,9 +558,10 @@ body.bubbly .gpt-show-output {
   border-radius: 999px;
   font-size: 14px;
   font-weight: 600;
-  font-family: "Quicksand", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s;
+  width: fit-content;
 }
 
 body.bubbly .gpt-show-output:hover {
