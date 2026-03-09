@@ -589,7 +589,7 @@ body.retro .spin-icon {
     body.retro h1, body.retro h2, body.retro h3,
     body.retro p, body.retro td, body.retro th,
     body.retro div, body.retro span, body.retro a {
-        font-family: "Comic Sans MS", "Comic Sans", "Courier New", monospace;
+        font-family: "Comic Sans MS", "Comic Sans", Verdana, sans-serif;
     }
 
     body.retro .retro-sidebar {
