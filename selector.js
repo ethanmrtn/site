@@ -12,14 +12,8 @@
   let pickerReady = false;
   let optionEls = [];
 
-  // Check saved theme
-  const saved = localStorage.getItem(STORAGE_KEY);
-  if (saved && THEMES.includes(saved)) {
-    selector.style.display = "none";
-    loadTheme(saved);
-  } else {
-    runBoot();
-  }
+  // Always show boot sequence on load
+  runBoot();
 
   // Boot sequence
   function runBoot() {
