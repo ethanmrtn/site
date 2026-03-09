@@ -1,0 +1,153 @@
+/* Theme Selector — CRT Boot Screen */
+#selector {
+  position: fixed;
+  inset: 0;
+  z-index: 8000;
+  background: #020a02;
+  color: #39ff14;
+  font-family: "Share Tech Mono", monospace;
+  padding: 48px;
+  overflow: hidden;
+  transition: opacity 0.6s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#selector.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.boot-line {
+  font-size: 14px;
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.3s, transform 0.3s;
+  white-space: nowrap;
+}
+
+.boot-line.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.boot-line .ok {
+  color: #39ff14;
+  text-shadow: 0 0 6px #39ff1466;
+}
+
+.boot-line .fail {
+  color: #ff3939;
+}
+
+/* Loading bar */
+.boot-bar-wrap {
+  margin-top: 16px;
+  width: 320px;
+  height: 14px;
+  border: 1px solid #39ff1444;
+  opacity: 0;
+  transition: opacity 0.3s;
+  overflow: hidden;
+}
+
+.boot-bar-wrap.show {
+  opacity: 1;
+}
+
+.boot-bar {
+  height: 100%;
+  width: 0%;
+  background: #39ff14;
+  box-shadow: 0 0 10px #39ff1466;
+  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.boot-bar.fill {
+  width: 100%;
+}
+
+/* Theme picker menu */
+.picker {
+  margin-top: 32px;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.picker.show {
+  opacity: 1;
+}
+
+.picker-title {
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: #39ff14;
+  text-shadow: 0 0 8px #39ff1444;
+}
+
+.picker-option {
+  font-size: 18px;
+  line-height: 1;
+  padding: 10px 16px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+  display: block;
+  width: fit-content;
+  color: #39ff14;
+  background: transparent;
+  font-family: inherit;
+  text-align: left;
+}
+
+.picker-option:hover,
+.picker-option.active {
+  background: #39ff1412;
+  border-color: #39ff1444;
+}
+
+.picker-option .key {
+  color: #39ff14;
+  text-shadow: 0 0 6px #39ff1466;
+  font-weight: bold;
+}
+
+.picker-hint {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #39ff1466;
+}
+
+/* Blinking cursor after last boot line */
+.boot-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: #39ff14;
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink-cursor 1s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  #selector {
+    padding: 24px;
+  }
+  .boot-line {
+    font-size: 12px;
+  }
+  .picker-option {
+    font-size: 16px;
+  }
+  .boot-bar-wrap {
+    width: 100%;
+    max-width: 280px;
+  }
+}

@@ -1,0 +1,16 @@
+/* PLAIN theme — intentionally looks like unstyled browser defaults */
+
+body.plain {
+  --crt-intensity: 0.08;
+  --crt-flicker: 0;
+
+  font-family: "Times New Roman", Times, serif;
+  color: black;
+  background: white;
+}
+
+body.plain #app {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
