@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Quicksand:wght@400;600;700&family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="crt.css">
   <link rel="stylesheet" href="selector.css">
+  <link rel="stylesheet" href="switcher.css">
   <link rel="stylesheet" id="theme-css" href="">
 </head>
 <body>
@@ -18,10 +19,13 @@
   <div id="crt-noise"></div>
   <div id="selector"></div>
   <div id="app"></div>
-  <button id="theme-switch" aria-label="Change theme">
-    <span class="theme-switch-arrow">&uarr;</span>
-    <span class="theme-switch-label">switch theme</span>
-  </button>
+  <div id="theme-switch" aria-label="Change theme">
+    <div class="theme-switch-tab">
+      <span class="theme-switch-arrow">&uarr;</span>
+      <span class="theme-switch-label">switch theme</span>
+    </div>
+    <div class="theme-switch-options"></div>
+  </div>
   <script src="data.js"></script>
   <script src="selector.js"></script>
 </body>

@@ -1,0 +1,198 @@
+/* Theme switcher — base styles */
+#theme-switch {
+  position: fixed;
+  bottom: 0;
+  right: 24px;
+  z-index: 9500;
+  display: none;
+  flex-direction: column;
+  align-items: stretch;
+  font-family: monospace;
+  font-size: 13px;
+  transform: translateY(calc(100% - 42px));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#theme-switch.open {
+  transform: translateY(0);
+}
+
+/* The visible tab */
+.theme-switch-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 20px;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  color: #aaa;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+
+.theme-switch-tab:hover {
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+}
+
+.theme-switch-arrow {
+  font-size: 18px;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#theme-switch.open .theme-switch-arrow {
+  transform: rotate(180deg);
+}
+
+.theme-switch-label {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+/* Options panel */
+.theme-switch-options {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.theme-switch-options button {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  color: #aaa;
+  font-family: monospace;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  letter-spacing: 0.5px;
+}
+
+.theme-switch-options button:last-child {
+  border-bottom: none;
+}
+
+.theme-switch-options button:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.theme-switch-options button.active-theme {
+  color: #39ff14;
+}
+
+.theme-switch-options button.active-theme::after {
+  content: " \2713";
+}
+
+/* ── Per-theme overrides ── */
+
+/* Terminal */
+body.terminal .theme-switch-tab {
+  background: rgba(2,10,2,0.9);
+  border-color: #1a7a08;
+  color: #1a7a08;
+  font-family: "Share Tech Mono", monospace;
+}
+body.terminal .theme-switch-tab:hover { color: #39ff14; }
+body.terminal .theme-switch-options {
+  background: rgba(2,10,2,0.95);
+  border-color: #1a7a08;
+}
+body.terminal .theme-switch-options button { color: #1a7a08; font-family: "Share Tech Mono", monospace; }
+body.terminal .theme-switch-options button:hover { background: rgba(57,255,20,0.08); color: #39ff14; }
+body.terminal .theme-switch-options button.active-theme { color: #39ff14; }
+
+/* Plain */
+body.plain .theme-switch-tab {
+  background: #fff;
+  border-color: #ccc;
+  color: #333;
+  font-family: "Times New Roman", serif;
+  backdrop-filter: none;
+}
+body.plain .theme-switch-tab:hover { background: #eee; color: #000; }
+body.plain .theme-switch-options {
+  background: #fff;
+  border-color: #ccc;
+  border-top-color: #ddd;
+}
+body.plain .theme-switch-options button { color: #333; font-family: "Times New Roman", serif; }
+body.plain .theme-switch-options button:hover { background: #eee; color: #000; }
+body.plain .theme-switch-options button.active-theme { color: blue; }
+
+/* AI Slop */
+body.ai-slop .theme-switch-tab {
+  background: rgba(255,255,255,0.85);
+  border-color: rgba(167,139,250,0.2);
+  color: #7c7c9a;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  border-radius: 16px 16px 0 0;
+  backdrop-filter: blur(14px);
+}
+body.ai-slop .theme-switch-tab:hover { color: #2d2d3f; background: rgba(255,255,255,0.95); }
+body.ai-slop .theme-switch-options {
+  background: rgba(255,255,255,0.95);
+  border-color: rgba(167,139,250,0.2);
+  border-top-color: rgba(167,139,250,0.1);
+  backdrop-filter: blur(14px);
+}
+body.ai-slop .theme-switch-options button { color: #7c7c9a; font-family: "Quicksand", sans-serif; font-weight: 600; }
+body.ai-slop .theme-switch-options button:hover { background: #f3eaff; color: #2d2d3f; }
+body.ai-slop .theme-switch-options button.active-theme { color: #a78bfa; }
+
+/* Corporate */
+body.corporate .theme-switch-tab {
+  background: #1b3a7b;
+  border-color: #2b5797;
+  color: rgba(255,255,255,0.7);
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-size: 11px;
+  border-radius: 4px 4px 0 0;
+  backdrop-filter: none;
+}
+body.corporate .theme-switch-tab:hover { color: #fff; background: #24478f; }
+body.corporate .theme-switch-options {
+  background: #1b3a7b;
+  border-color: #2b5797;
+  border-top-color: #2b5797;
+}
+body.corporate .theme-switch-options button { color: rgba(255,255,255,0.7); font-family: "Segoe UI", Tahoma, sans-serif; font-size: 11px; }
+body.corporate .theme-switch-options button:hover { background: rgba(255,255,255,0.15); color: #fff; }
+body.corporate .theme-switch-options button.active-theme { color: #7bc8ff; }
+
+/* Retro */
+body.retro .theme-switch-tab {
+  background: linear-gradient(180deg, #666 0%, #333 50%, #666 100%);
+  border: 2px outset #999;
+  border-bottom: none;
+  color: #ffff00;
+  font-family: "Comic Sans MS", cursive;
+  font-size: 12px;
+  border-radius: 6px 6px 0 0;
+  backdrop-filter: none;
+}
+body.retro .theme-switch-tab:hover { background: linear-gradient(180deg, #888 0%, #555 50%, #888 100%); color: #fff; }
+body.retro .theme-switch-options {
+  background: #111;
+  border: 2px ridge #808080;
+  border-top: 1px solid #555;
+}
+body.retro .theme-switch-options button { color: #00ffff; font-family: "Comic Sans MS", cursive; font-size: 12px; }
+body.retro .theme-switch-options button:hover { background: #333; color: #ffff00; }
+body.retro .theme-switch-options button.active-theme { color: #00ff00; }

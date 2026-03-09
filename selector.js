@@ -129,8 +129,11 @@
     loadTheme(THEMES[idx]);
   }
 
+  var currentTheme = null;
+
   function loadTheme(id) {
     localStorage.setItem(STORAGE_KEY, id);
+    currentTheme = id;
 
     // Clean up old theme
     if (window.__themeCleanup) {
@@ -160,34 +163,51 @@
       selector.style.display = "none";
     }, 600);
 
-    // Show theme switcher button
+    // Show theme switcher + populate options
     switchBtn.style.display = "flex";
+    switchBtn.classList.remove("open");
+    buildSwitchOptions();
   }
 
-  // Theme switcher button — re-open selector
-  switchBtn.addEventListener("click", function () {
-    if (window.__themeCleanup) {
-      window.__themeCleanup();
-      window.__themeCleanup = null;
-    }
-    app.innerHTML = "";
-    app.className = "";
-    themeCssLink.href = "";
+  // Build the inline theme options
+  var optionsContainer = switchBtn.querySelector(".theme-switch-options");
+  var tabEl = switchBtn.querySelector(".theme-switch-tab");
 
-    var oldScript = document.getElementById("theme-script");
-    if (oldScript) oldScript.remove();
+  function buildSwitchOptions() {
+    var h = "";
+    THEMES.forEach(function (id, i) {
+      var cls = id === currentTheme ? ' class="active-theme"' : "";
+      h += "<button data-theme=\"" + id + "\"" + cls + ">" + LABELS[i] + "</button>";
+    });
+    optionsContainer.innerHTML = h;
 
-    switchBtn.style.display = "none";
-    selector.style.display = "flex";
-    selector.classList.remove("hidden");
+    // Bind click handlers
+    optionsContainer.querySelectorAll("button").forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var themeId = btn.dataset.theme;
+        if (themeId === currentTheme) {
+          switchBtn.classList.remove("open");
+          return;
+        }
+        switchBtn.classList.remove("open");
+        loadTheme(themeId);
+      });
+    });
+  }
 
-    // Reset to picker directly (skip boot)
-    selector.innerHTML = buildPicker();
-    optionEls = selector.querySelectorAll(".picker-option");
-    bindPickerEvents();
-    pickerReady = true;
-    highlightOption(0);
-    var picker = selector.querySelector(".picker");
-    if (picker) picker.classList.add("show");
+  // Toggle options panel
+  tabEl.addEventListener("click", function (e) {
+    e.stopPropagation();
+    switchBtn.classList.toggle("open");
+  });
+
+  // Close when clicking outside
+  document.addEventListener("click", function () {
+    switchBtn.classList.remove("open");
+  });
+
+  switchBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
   });
 })();
